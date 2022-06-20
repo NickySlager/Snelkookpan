@@ -1,5 +1,40 @@
-header{
+header nav{
     display: flex;
     justify-content: space-around;
 
+}
+.wrapper{
+    width: 67%;
+    margin: auto;
+}
+/* overzicht */
+.introductie{
+    text-align: center;
+}
+.overzicht-huizen{
+    display: flex;
+    flex-direction: column;
+}
+.overzicht-huis{
+    display: flex;
+    margin: 0px 0px 20px 0px;
+}
+.overzicht-huis img{
+ width: 300px;
+ height: 200px;
+}
+.overzicht-huis a{
+    display: flex;
+}
+/* detail */
+.details-huis{
+    display: flex;
+    justify-content: center;
+}
+.details-huis img{
+    width: 500px;
+    height: 300px;
+}
+.huis-informatie{
+    margin:20px;
 }
