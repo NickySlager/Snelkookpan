@@ -3,35 +3,41 @@
     <div class="wrapper">
     <?php
     require_once "backend/conn.php";
-    $query = "SELECT * FROM huizen";
+    $query = "SELECT * FROM reservaties";
     $statement = $conn->prepare($query);
     $statement ->execute();
-    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
+    $reservaties = $statement->Fetchall(PDO::FETCH_ASSOC);
     ?>
+    <div class="introductie">
+        <h1>Aanvraag Reservaties</h1>
+    </div>
     <div class="status-container">
             <table>
                 <tr>
                     <th>ID Huis</th>
-                    <th>Locatie</th>
-                    <th>aantal personen</th>
-                    <th>Prijs per dag</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Start Datum</th>
+                    <th>Eind-datum</th>
                     <th>Status</th>
                 </tr>
         <?php
-    foreach($huizen as $huis)
+    foreach($reservaties as $reservatie)
     {
         ?>
         <tr>
-            <td><?php echo $huis["id"]; ?></td>
-            <td><?php echo $huis["locatie"]; ?></td>
-            <td><?php echo $huis["aantal_personen"]; ?></td>
-            <td>€<?php echo $huis["prijs_per_dag"]; ?></td>
-            <td><form action="backend/backendController.php" method="POST">
+            <td><?php echo $reservatie["id_gereserveerde_huis"]; ?></td>
+            <td><?php echo $reservatie["email"]; ?></td>
+            <td><?php echo $reservatie["phone_number"]; ?></td>
+            <td><?php echo $reservatie["start_datum_reservatie"]; ?></td>
+            <td><?php echo $reservatie["eind_datum_reservatie"]; ?></td>
+            <td>
+                <form action="backend/backendController.php" method="POST">
                     <input type="hidden" name="action" value="edit-status">
-                    <input type ="hidden" name="id" value="<?php echo $huis['id'];?>">
+                    <input type ="hidden" name="id" value="<?php echo $reservatie['id'];?>">
                     <select id="status" name="status">
                         <option value="" selected="selected" hidden="hidden"><?php
-                    if  (($huis["status"]) == 1)
+                    if  (($reservatie["status"]) == 1)
                     {
                         echo "Gereserveerd";
                     }
@@ -44,6 +50,13 @@
                     </select>
                     <td><input type="submit" value="submit"></td>
                 </form>
+                <td>
+                    <form action="backend/backendController.php" method="POST">
+                        <input type="hidden" name="action" value="delete">
+                        <input type ="hidden" name="id" value="<?php echo $reservatie['id'];?>">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
             </td>
 
         </tr>
