@@ -1,8 +1,20 @@
+/* header */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    height: 100px;
+}
 header nav{
     display: flex;
     justify-content: space-around;
-
+    width: 100%;
 }
+header nav a{
+    text-decoration: none;
+}
+
 .wrapper{
     width: 67%;
     margin: auto;
@@ -37,4 +49,19 @@ header nav{
 }
 .huis-informatie{
     margin:20px;
+}
+/* status overview  */
+
+.status-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+}
+.status-container table{
+    border:1px solid black;
+    background-color: gray;
+}
+.status-container table td{
+    text-align: center;
+    padding: 10px 10px;
 }

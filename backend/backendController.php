@@ -40,4 +40,44 @@ if($action == "optie-filter")
         <?php
 
 }
+if($action =="edit-status")
+{
+    $status= $_POST['status'];
+    $id = $_POST['id'];
+    require_once "conn.php";
+    $query = "UPDATE huizen SET status = :status WHERE id =:id";
+    $statement = $conn->prepare($query);
+    $statement->execute([
+        ":status" => $status,
+        ":id" => $id
+    ]);
+    $query2 = "UPDATE reservaties SET status = :status WHERE id_gereserveerde_huis =:id";
+    $statement = $conn->prepare($query2);
+    $statement->execute([
+        ":status" => $status,
+        ":id" => $id
+    ]);
+}
+if($action =="reserveren")
+{
+    $huis_id = $_POST['huis_id'];
+    $email = $_POST['email'];
+    $phone_number = $_POST['phone_number'];
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+    $status = $_POST['status'];
+    require_once "conn.php";
+    $query = "INSERT INTO reservaties(email, phone_number, start_datum_reservatie, eind_datum_reservatie, id_gereserveerde_huis, status) VALUES(:email, :phone_number, :start_datum_reservatie, :eind_datum_reservatie, :id_gereserveerde_huis, :status)";
+    $statement = $conn->prepare($query);
+    $statement->execute([
+        ":email" =>$email,
+        ":phone_number" => $phone_number,
+        ":start_datum_reservatie" =>$start_date,
+        ":eind_datum_reservatie" => $end_date,
+        ":id_gereserveerde_huis" => $huis_id,
+        ":status" => $status
+    ]);
+    header("Location: ../index.php");
+}
+
 ?>

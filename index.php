@@ -17,7 +17,7 @@
         <div class="overzicht-huizen">
             <?php
             require_once "backend/conn.php";
-            $query = "SELECT * FROM huizen";
+            $query = "SELECT * FROM huizen WHERE status = 0";
             $statement = $conn->prepare($query);
             $statement ->execute();
             $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
