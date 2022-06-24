@@ -6,30 +6,26 @@
             <h1>Welkom op de overzicht pagina van Snelkookpan</h1>
         </div>
         <div class="filters">
-            <div class="locatie-filter-form">
-                        <form action ="backend/backendController.php" method="post">
-                            <div class="form-group">
-                                <label for="filter">Locatie Filter:</label>
-                                <input type="text" name="locatie-filter" id ="locatie-filter">
-                                <input type="hidden" name="action" value="locatie-filter">
-                            </div>
-                                <input type="submit" name="submit" value="submit">
-                        </form>
-            </div>
-            <div class="prijs-filter-form">
-                    <form action ="backend/backendController.php" method="post">
-                        <div class="form-group">
-                            <label for ="prijsfilter">Prijs Filter</label>
-                            <select id ="prijsfilter" name="prijsfilter" style="width:200px;">
+                <form action ="backend/backendController.php" method="post">
+                    <div class="form-group">
+                        <label for="filter">Locatie Filter:</label>
+                            <input type="text" name="locatie-filter" id ="locatie-filter">
+                    </div>
+                    <div class="form-group">
+                        <label for ="prijsfilter">Prijs Filter</label>
+                            <select id ="prijs-filter" name="prijs-filter" style="width:200px;">
                                 <option value="" selected="selected" hidden="hidden"></option>
                                 <option value="0">Van hoog naar laag</option>
                                 <option value ="1">Van laag naar hoog</option>
                             </select>
-                            <input type="hidden" name="action" value="prijs-filter">
-                        </div>
+                        <input type="hidden" name="action" value="filter">
+                    </div>
+                    <div class="form-group">
+                       <label for="personen-filter">Aantal personen Filter</label>
+                       <input type="number" name="personen-filter" id="personen-filter" style="width:117px;"> 	
+                    </div>    
                         <input type="submit" name="submit" value="submit">
                     </form>
-            </div>
        </div>
         <div class="overzicht-huizen">
             <?php
