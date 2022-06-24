@@ -11,6 +11,14 @@
     <nav>
         <a href=http://localhost/snelkookpan/index.php>Home</a>
         <a href="">Overzicht</a>
-        <a href=http://localhost/snelkookpan/statusoverview.php>Status</a>
+        <?Php if(isset($_SESSION['user_id'])): ?>
+            <a href=http://localhost/snelkookpan/statusoverview.php>Status</a>
+        <?php endif; ?>
+        <?php if(!isset($_SESSION['user_id'])): ?>
+            <a href =http://localhost/snelkookpan/login.php>Inloggen</a>
+        <?php endif;?>
+        <?php if(isset($_SESSION['user_id'])):?>          
+            <a href="http://localhost/snelkookpan/logout.php">Logout</a>
+        <?php endif; ?>
     </nav>
 </header>

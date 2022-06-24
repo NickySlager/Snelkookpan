@@ -2,12 +2,11 @@
 
 <?php
 $action = $_POST['action'];
-
-if($action == "optie-filter")
-{
+if($action == "locatie-filter")
+{   
     $locatieFilter=$_POST['locatie-filter'];
     require_once "conn.php";
-    $query= "SELECT * FROM huizen WHERE :locatie = locatie";
+    $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0" ;
     $statement= $conn->prepare($query);
     $statement->execute([
         ":locatie"=> $locatieFilter
@@ -38,7 +37,55 @@ if($action == "optie-filter")
         </div>
     </body>
         <?php
+    
+}
+if($action == "prijs-filter")
+{   
+    $prijsFilter= $_POST['prijsfilter'];
+    if (empty($prijsFilter)){
+        header("Location:../index.php");
+    }
+    require_once "conn.php";
+    // van hoog naar laag 
+    if($prijsFilter == 0)
+    {
+        $query= "SELECT * FROM huizen WHERE status = 0 ORDER BY prijs_per_dag DESC";
+    }
+    // van laag naar hoog
+    if($prijsFilter == 1)
+    {
+        $query= "SELECT * FROM huizen WHERE status = 0 ORDER BY prijs_per_dag ASC";
+    }
+    $statement= $conn->prepare($query);
+    $statement->execute();
+    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
+    ?>
+    <body>
+        <div class="wrapper">
+            <h1>Locatie Overzicht</h1>
+            <div class="overzicht-huizen">
+            <?php
+            foreach($huizen as $huis)
+            { ?>
+                <div class="overzicht-huis">
+                            <img src=<?php echo $huis["afbeelding"]; ?> alt="huis">
+                            <div class="huis-informatie">
+                                <p>Locatie:<?php echo $huis["locatie"];?>
+                                <p>Aantal personen:<?php echo $huis["aantal_personen"];?>
+                                <p>Prijs per dag:€<?php echo $huis["prijs_per_dag"]; ?></p>
+                                <a href="http://localhost/snelkookpan/detailspage.php?id=<?php echo $huis["id"];?>">Details</a>
+                                <a href="http://localhost/snelkookpan/reservepage.php?id=<?php echo $huis["id"];?>">Reserveren</a>
+                            </div>
+                        </div>
+                    <?php
+            }
+            ?>
+            </div>
+        </div>
+    </body>
+        <?php
 
+    
 }
 if($action =="edit-status")
 {
@@ -57,6 +104,7 @@ if($action =="edit-status")
         ":status" => $status,
         ":id" => $id
     ]);
+    header("Location: ../statusoverview.php");
 }
 if($action =="reserveren")
 {

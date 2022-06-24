@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+<?php if(!isset($_SESSION['user_id']))
+{
+    echo "u heeft geen toegang tot deze pagina";
+    Header("Location: $base_url Index.php");
+}
+?>
 <?php require_once "header.php" ?>
 <body>
     <div class="wrapper">

@@ -1,18 +1,35 @@
+<?php session_start(); ?>
 <?php require_once "header.php" ?>
 <body>
     <div class="wrapper">
         <div class="introductie">
             <h1>Welkom op de overzicht pagina van Snelkookpan</h1>
         </div>
-        <div class="filter-formulier">
-                <form action ="backend/backendController.php" method="post">
-                    <div class="form-group">
-                        <label for="filter">Locatie Filter:</label>
-                        <input type="text" name="locatie-filter" id ="locatie-filter">
-                        <input type="hidden" name="action" value="optie-filter">
-                    </div>
+        <div class="filters">
+            <div class="locatie-filter-form">
+                        <form action ="backend/backendController.php" method="post">
+                            <div class="form-group">
+                                <label for="filter">Locatie Filter:</label>
+                                <input type="text" name="locatie-filter" id ="locatie-filter">
+                                <input type="hidden" name="action" value="locatie-filter">
+                            </div>
+                                <input type="submit" name="submit" value="submit">
+                        </form>
+            </div>
+            <div class="prijs-filter-form">
+                    <form action ="backend/backendController.php" method="post">
+                        <div class="form-group">
+                            <label for ="prijsfilter">Prijs Filter</label>
+                            <select id ="prijsfilter" name="prijsfilter" style="width:200px;">
+                                <option value="" selected="selected" hidden="hidden"></option>
+                                <option value="0">Van hoog naar laag</option>
+                                <option value ="1">Van laag naar hoog</option>
+                            </select>
+                            <input type="hidden" name="action" value="prijs-filter">
+                        </div>
                         <input type="submit" name="submit" value="submit">
-                </form>
+                    </form>
+            </div>
        </div>
         <div class="overzicht-huizen">
             <?php

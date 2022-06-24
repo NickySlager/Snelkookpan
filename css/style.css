@@ -64,3 +64,23 @@ header nav a{
     text-align: center;
     padding: 10px 10px;
 }
+/* filters */
+.filters{
+    
+}
+/* locatie-filter-form */
+.locatie-filter-form{
+    margin: 10px 0 10px 0;
+}
+.locatie-filter-form form{
+    display: flex;
+
+}
+/* prijs-filter-form */
+.prijs-filter-form form{
+    display: flex;
+
+}
+.prijs-filter-form{
+    margin: 10px 0 10px 0;
+}
