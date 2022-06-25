@@ -64,8 +64,16 @@ header nav a{
     text-align: center;
     padding: 10px 10px;
 }
+.status-container table th{
+    padding: 10px 10px;
+}
 /* filters */
 .filters{
     display: flex;
+}
+/* label  */
+.create-formulier label{
+    display: block;
+
 }
     

@@ -21,6 +21,7 @@
     <div class="status-container">
             <table>
                 <tr>
+                    <th>Order ID</th>
                     <th>ID Huis</th>
                     <th>Email</th>
                     <th>Phone Number</th>
@@ -33,6 +34,7 @@
     {
         ?>
         <tr>
+            <td><?php echo $reservatie['id']; ?></td>
             <td><?php echo $reservatie["id_gereserveerde_huis"]; ?></td>
             <td><?php echo $reservatie["email"]; ?></td>
             <td><?php echo $reservatie["phone_number"]; ?></td>
@@ -41,7 +43,7 @@
             <td>
                 <form action="backend/backendController.php" method="POST">
                     <input type="hidden" name="action" value="edit-status">
-                    <input type ="hidden" name="id" value="<?php echo $reservatie['id'];?>">
+                    <input type="hidden" name ="huis_id" value="<?php echo $reservatie['id_gereserveerde_huis'];?>">
                     <select id="status" name="status">
                         <option value="" selected="selected" hidden="hidden"><?php
                     if  (($reservatie["status"]) == 1)

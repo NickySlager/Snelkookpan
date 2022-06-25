@@ -10,9 +10,9 @@
 <header>
     <nav>
         <a href=http://localhost/snelkookpan/index.php>Home</a>
-        <a href="">Overzicht</a>
         <?Php if(isset($_SESSION['user_id'])): ?>
-            <a href=http://localhost/snelkookpan/statusoverview.php>Status</a>
+            <a href="http://localhost/snelkookpan/statusoverview.php">Status</a>
+            <a href="http://localhost/snelkookpan/create.php">Create</a>
         <?php endif; ?>
         <?php if(!isset($_SESSION['user_id'])): ?>
             <a href =http://localhost/snelkookpan/login.php>Inloggen</a>

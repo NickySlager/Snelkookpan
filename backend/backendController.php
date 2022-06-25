@@ -111,7 +111,31 @@ if($action == "filter")
         }
 
     }
-    
+    if(((!empty($locatieFilter)) && (!empty($personenFilter)) && ($prijsFilter != null)))
+    {
+        if($prijsFilter == 0)
+        {
+        require_once "conn.php";
+        $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen AND :locatie = locatie ORDER BY prijs_per_dag DESC" ;
+        $statement= $conn->prepare($query);
+        $statement->execute([
+            ":aantal_personen" => $personenFilter,
+            ":locatie"=> $locatieFilter
+        ]);
+        $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
+        }
+        if($prijsFilter == 1)
+        {
+            require_once "conn.php";
+            $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen AND :locatie = locatie ORDER BY prijs_per_dag ASC" ;
+            $statement= $conn->prepare($query);
+            $statement->execute([
+                ":aantal_personen"=>$personenFilter,
+                ":locatie"=> $locatieFilter
+            ]);
+            $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
+        }
+    }
     ?>
     <body>
         <div class="wrapper">
@@ -143,21 +167,22 @@ if($action == "filter")
 if($action =="edit-status")
 {
     $status= $_POST['status'];
-    $id = $_POST['id'];
+    $huis_id= $_POST['huis_id'];
     require_once "conn.php";
     $query = "UPDATE huizen SET status = :status WHERE id =:id";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":status" => $status,
-        ":id" => $id
+        ":id" => $huis_id,
     ]);
-    $query2 = "UPDATE reservaties SET status = :status WHERE id_gereserveerde_huis =:id";
+    $query2 = "UPDATE reservaties SET status = :status WHERE id_gereserveerde_huis =:huis_id";
     $statement = $conn->prepare($query2);
     $statement->execute([
         ":status" => $status,
-        ":id" => $id
+        ":huis_id" => $huis_id
     ]);
-    header("Location: ../statusoverview.php");
+    header("Location: $base_url/statusoverview.php");
+    
 }
 if($action =="reserveren")
 {
@@ -178,7 +203,11 @@ if($action =="reserveren")
         ":id_gereserveerde_huis" => $huis_id,
         ":status" => $status
     ]);
-    header("Location: ../index.php");
+    if(isset($query))
+    {   
+        header("Location:$base_url/index.php");
+    }
+
 }
 if($action =="delete")
 {
@@ -189,7 +218,27 @@ if($action =="delete")
     $statement->execute([
         ":id" => $id
     ]);
-    header("Location: ../index.php");
+    header("Location: $base_url/statusoverview.php");
+}
+if($action =="create")
+{
+    $locatie = $_POST['locatie'];
+    $aantal_personen=$_POST['aantal_personen'];
+    $prijs_per_dag = $_POST['prijs_per_dag'];
+    $image =$_POST['image'];
+    $beschrijving = $_POST['beschrijving'];
+    require_once "conn.php";
+    $query= "INSERT INTO huizen(locatie, aantal_personen, prijs_per_dag, afbeelding, beschrijving) VALUES(:locatie, :aantal_personen, :prijs_per_dag, :afbeelding, :beschrijving)";
+    $statement = $conn->prepare($query);
+    $statement ->execute([
+        ":locatie" => $locatie,
+        ":aantal_personen"=>$aantal_personen,
+        ":prijs_per_dag"=> $prijs_per_dag,
+        ":afbeelding"=> $image,
+        ":beschrijving"=>$beschrijving
+    ]);
+    header("Location:$base_url/index.php");
+    echo "<script>alert('image has been uploaded')</script>";
 }
 
 ?>
