@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 24 jun 2022 om 17:15
+-- Gegenereerd op: 26 jun 2022 om 20:21
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 7.4.29
 
@@ -33,6 +33,7 @@ CREATE TABLE `huizen` (
   `aantal_personen` int(11) NOT NULL,
   `prijs_per_dag` double NOT NULL,
   `afbeelding` text NOT NULL,
+  `beschrijving` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,11 +41,14 @@ CREATE TABLE `huizen` (
 -- Gegevens worden geëxporteerd voor tabel `huizen`
 --
 
-INSERT INTO `huizen` (`id`, `locatie`, `aantal_personen`, `prijs_per_dag`, `afbeelding`, `status`) VALUES
-(1, 'Breda', 4, 70, 'img/huis1.jpg', 1),
-(2, 'Zevenbergen', 7, 120, 'img/huis2.jpg', 0),
-(3, 'Zevenbergen', 5, 80, 'img/huis3.jpg', 0),
-(4, 'Rotterdam', 3, 65, 'img/huis4.jpg', 0);
+INSERT INTO `huizen` (`id`, `locatie`, `aantal_personen`, `prijs_per_dag`, `afbeelding`, `beschrijving`, `status`) VALUES
+(1, 'Breda', 4, 70, 'img/huis1.jpg', 'heel mooi huis', 0),
+(2, 'Zevenbergen', 7, 120, 'img/huis2.jpg', 'Nog mooier huis', 0),
+(3, 'Zevenbergen', 5, 80, 'img/huis3.jpg', '', 0),
+(4, 'Rotterdam', 3, 65, 'img/huis4.jpg', '', 0),
+(5, 'Breda', 3, 90, 'img/huis5.jpg', 'heel duur', 0),
+(6, 'Breda', 7, 70, 'huis6.jpg', 'hallo', 0),
+(7, 'Rotterdam', 3, 90, 'huis6.jpg', 'goedkoop', 0);
 
 -- --------------------------------------------------------
 
@@ -57,6 +61,13 @@ CREATE TABLE `personeel` (
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `personeel`
+--
+
+INSERT INTO `personeel` (`id`, `username`, `password`) VALUES
+(1, 'baas', 'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f');
 
 -- --------------------------------------------------------
 
@@ -74,12 +85,27 @@ CREATE TABLE `reservaties` (
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Gegevens worden geëxporteerd voor tabel `reservaties`
+-- Tabelstructuur voor tabel `reviews`
 --
 
-INSERT INTO `reservaties` (`id`, `email`, `phone_number`, `start_datum_reservatie`, `eind_datum_reservatie`, `id_gereserveerde_huis`, `status`) VALUES
-(1, 'N.A.Slager@hotmail.com', 637603253, '2022-06-24', '2022-06-25', 1, 1);
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `review` text NOT NULL,
+  `huis_id` int(11) NOT NULL,
+  `date_of_posting` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `name`, `review`, `huis_id`, `date_of_posting`) VALUES
+(24, 'DSADA', 'sdasda', 2, '2022-06-26'),
+(25, 'safds', 'fdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 2, '2022-06-26');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -104,6 +130,12 @@ ALTER TABLE `reservaties`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -111,19 +143,25 @@ ALTER TABLE `reservaties`
 -- AUTO_INCREMENT voor een tabel `huizen`
 --
 ALTER TABLE `huizen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT voor een tabel `personeel`
 --
 ALTER TABLE `personeel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservaties`
 --
 ALTER TABLE `reservaties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT voor een tabel `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
