@@ -5,6 +5,9 @@
         <div class="introductie">
             <h1>Welkom op de overzicht pagina van Snelkookpan</h1>
         </div>
+        <div class="banner">
+            
+        </div>
         <div class="filters">
                 <form action ="backend/backendController.php" method="post">
                     <div class="form-group">
@@ -22,7 +25,7 @@
                     </div>
                     <div class="form-group">
                        <label for="personen-filter">Aantal personen Filter</label>
-                       <input type="number" name="personen-filter" id="personen-filter" style="width:117px;"> 	
+                       <input type="number" min="0" name="personen-filter" id="personen-filter" style="width:117px;"> 	
                     </div>    
                         <input type="submit" name="submit" value="submit">
                     </form>

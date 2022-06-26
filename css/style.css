@@ -6,6 +6,11 @@ header{
     background-color: gray;
     height: 100px;
 }
+header .logo img {
+    margin: 0px 0px 0px 60px;
+    width: 75px;
+    height: 75px;
+}
 header nav{
     display: flex;
     justify-content: space-around;
@@ -18,6 +23,14 @@ header nav a{
 .wrapper{
     width: 67%;
     margin: auto;
+    
+}
+/* banner */
+.banner{
+    background-image: url("../img/banner.jpg");
+    width:100%;
+    height: 250px;
+    margin: 0px 0px 50px 0px;
 }
 /* overzicht */
 .introductie{
@@ -70,10 +83,63 @@ header nav a{
 /* filters */
 .filters{
     display: flex;
+    margin: 0px 0px 50px 0px;
 }
 /* label  */
 .create-formulier label{
     display: block;
 
 }
+/* reviews */
+.review-form-container .form-group label{
+    display: block;
+}
+.review-form-container{
+    border: 1px solid white;
+    width: 500px;
+    margin: 10px 0px 10px 0px;
+    padding:10px 10px 10px 10px;
+}
+.review-form-container textarea{
+    resize: none;
+}
+/* .overzicht-reviews  */
+.overzicht-reviews textarea{
+    resize: none;
+}
+.overzicht-reviews{
+    border: 1px solid white;
+    width: 500px;
+    margin: 10px 0px 10px 0px;
+    padding:0px 10px 0px 10px;
+}
+.reviews{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* login  */
+.login-pagina-container{
+    display: flex;
+    justify-content: center;
+}
+.login-container{
+    border: 1px solid black;
+    padding:30px;
+    margin-top: 25%;
     
+}
+.login-container input{
+    margin: 5px 0px 5px 0px;
+}
+.login-container .form-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+.login-container .form-button input{
+    width: 100px;
+}  

@@ -8,6 +8,9 @@
     <title>Header</title>
 </head>
 <header>
+    <div class="logo">
+    <a href="index.php"><img src="img/logo.png" alt="logo"></a>
+    </div>
     <nav>
         <a href=http://localhost/snelkookpan/index.php>Home</a>
         <?Php if(isset($_SESSION['user_id'])): ?>

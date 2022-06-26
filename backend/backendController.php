@@ -240,5 +240,21 @@ if($action =="create")
     header("Location:$base_url/index.php");
     echo "<script>alert('image has been uploaded')</script>";
 }
+if($action =="reviews")
+{   $date_of_posting=$_POST['date_of_posting'];
+    $huis_id=$_POST['huis_id'];
+    $name=$_POST['name'];
+    $review=$_POST['review'];
+    require_once "conn.php";
+    $query= "INSERT INTO reviews(name, review, huis_id, date_of_posting) VALUES(:name, :review, :huis_id, :date_of_posting)";
+    $statement= $conn->prepare($query);
+    $statement->execute([
+        ":name" =>$name,
+        ":review"=>$review,
+        ":huis_id"=> $huis_id,
+        ":date_of_posting"=>$date_of_posting
+    ]);
+    header("Location: $base_url/detailspage.php?id=$huis_id");
+}
 
 ?>
