@@ -10,6 +10,7 @@
         </div>
         <div class="filters">
                 <form action ="backend/backendController.php" method="post">
+                    <input type="hidden" name="action" value="filter">
                     <div class="form-group">
                         <label for="filter">Locatie Filter:</label>
                             <input type="text" name="locatie-filter" id ="locatie-filter">
@@ -21,7 +22,6 @@
                                 <option value="0">Van hoog naar laag</option>
                                 <option value ="1">Van laag naar hoog</option>
                             </select>
-                        <input type="hidden" name="action" value="filter">
                     </div>
                     <div class="form-group">
                        <label for="personen-filter">Aantal personen Filter</label>

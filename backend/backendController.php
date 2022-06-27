@@ -7,10 +7,11 @@ if($action == "filter")
     $locatieFilter=$_POST['locatie-filter'];
     $prijsFilter = $_POST['prijs-filter'];
     $personenFilter= $_POST['personen-filter'];
-    
+
     //  alleen locatie 
-    if ((empty($personenFilter)) && ($prijsFilter == null))
+    if (($locatieFilter != null) && ($prijsFilter == null) && (empty($personenFilter)))
     {
+        echo "doei";
     require_once "conn.php";
     $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0" ;
     $statement= $conn->prepare($query);
@@ -20,7 +21,7 @@ if($action == "filter")
     $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
     }
     // alleen prijs 
-    if ((empty($personenFilter)) && (empty($locatieFilter)))
+    elseif ((empty($personenFilter)) && (empty($locatieFilter)))
     {
         if($prijsFilter == 0)
         {
@@ -40,8 +41,9 @@ if($action == "filter")
         }
     }
     // alleen personen 
-    if ((empty($locatieFilter)) && ($prijsFilter == null))
+    elseif ((empty($locatieFilter)) && ($prijsFilter == null))
     {
+
     require_once "conn.php";
     $query= "SELECT * FROM huizen WHERE :aantal_personen = aantal_personen AND status = 0" ;
     $statement= $conn->prepare($query);
@@ -51,7 +53,7 @@ if($action == "filter")
     $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
     }
     // locatie + personen 
-    if ($prijsFilter == null)
+    elseif ($prijsFilter == null)
     {
     require_once "conn.php";
     $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0 AND :aantal_personen = aantal_personen" ;
@@ -63,8 +65,8 @@ if($action == "filter")
     $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
     }
     // locatie + prijs 
-    if(empty($personenFilter))
-    {
+    elseif($personenFilter == null)
+    { 
         if($prijsFilter == 0)
             {
             require_once "conn.php";
@@ -87,7 +89,7 @@ if($action == "filter")
             }
     }
     // prijs + personen 
-    if(empty($locatieFilter))
+    elseif (empty($locatieFilter))
     {
         if($prijsFilter == 0)
         {
@@ -111,7 +113,7 @@ if($action == "filter")
         }
 
     }
-    if(((!empty($locatieFilter)) && (!empty($personenFilter)) && ($prijsFilter != null)))
+    elseif(((!empty($locatieFilter)) && (!empty($personenFilter)) && ($prijsFilter != null)))
     {
         if($prijsFilter == 0)
         {
@@ -145,7 +147,7 @@ if($action == "filter")
             foreach($huizen as $huis)
             { ?>
                 <div class="overzicht-huis">
-                            <img src=<?php echo $huis["afbeelding"]; ?> alt="huis">
+                            <img src=../img/<?php echo $huis["afbeelding"]; ?> alt="huis">
                             <div class="huis-informatie">
                                 <p>Locatie:<?php echo $huis["locatie"];?>
                                 <p>Aantal personen:<?php echo $huis["aantal_personen"];?>

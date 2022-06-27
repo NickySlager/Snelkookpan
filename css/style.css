@@ -52,11 +52,6 @@ header nav a{
 .overzicht-huis a{
     display: flex;
 }
-.form-group{
-    display: flex;
-    justify-content: space-around;
-}
-
 
 /* detail */
 .details-huis{
