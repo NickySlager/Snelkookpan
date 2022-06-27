@@ -40,7 +40,7 @@
             foreach ($huizen as $huis)
             { ?>
                 <div class="overzicht-huis">
-                    <img src=<?php echo $huis["afbeelding"]; ?> alt="huis">
+                    <img src=img/<?php echo $huis["afbeelding"]; ?> alt="huis">
                     <div class="huis-informatie">
                         <p>Locatie:<?php echo $huis["locatie"];?>
                         <p>Aantal personen:<?php echo $huis["aantal_personen"];?>
