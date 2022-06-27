@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 jun 2022 om 20:21
+-- Gegenereerd op: 27 jun 2022 om 20:44
 -- Serverversie: 10.4.24-MariaDB
 -- PHP-versie: 7.4.29
 
@@ -42,11 +42,11 @@ CREATE TABLE `huizen` (
 --
 
 INSERT INTO `huizen` (`id`, `locatie`, `aantal_personen`, `prijs_per_dag`, `afbeelding`, `beschrijving`, `status`) VALUES
-(1, 'Breda', 4, 70, 'img/huis1.jpg', 'heel mooi huis', 0),
-(2, 'Zevenbergen', 7, 120, 'img/huis2.jpg', 'Nog mooier huis', 0),
-(3, 'Zevenbergen', 5, 80, 'img/huis3.jpg', '', 0),
-(4, 'Rotterdam', 3, 65, 'img/huis4.jpg', '', 0),
-(5, 'Breda', 3, 90, 'img/huis5.jpg', 'heel duur', 0),
+(1, 'Breda', 4, 70, 'huis1.jpg', 'heel mooi huis', 0),
+(2, 'Zevenbergen', 7, 120, 'huis2.jpg', 'Nog mooier huis', 0),
+(3, 'Zevenbergen', 5, 80, 'huis3.jpg', '', 0),
+(4, 'Rotterdam', 3, 65, 'huis4.jpg', '', 0),
+(5, 'Breda', 3, 90, 'huis5.jpg', 'heel duur', 0),
 (6, 'Breda', 7, 70, 'huis6.jpg', 'hallo', 0),
 (7, 'Rotterdam', 3, 90, 'huis6.jpg', 'goedkoop', 0);
 
