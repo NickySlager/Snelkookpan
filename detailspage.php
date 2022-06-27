@@ -15,7 +15,7 @@ $huis = $statement->fetch(PDO::FETCH_ASSOC);
             <h1>Details Huis</h1>
         </div>
         <div class="details-huis">
-            <img src=<?php echo $huis["afbeelding"];?>>
+            <img src=img/<?php echo $huis["afbeelding"];?>>
             <div class="huis-informatie">
                 <p>Locatie:<?php echo $huis["locatie"];?></p>
                 <p>Aantal personen:<?php echo $huis["aantal_personen"];?></p>

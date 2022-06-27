@@ -38,7 +38,8 @@ header nav a{
 }
 .overzicht-huizen{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 .overzicht-huis{
     display: flex;
@@ -51,6 +52,12 @@ header nav a{
 .overzicht-huis a{
     display: flex;
 }
+.form-group{
+    display: flex;
+    justify-content: space-around;
+}
+
+
 /* detail */
 .details-huis{
     display: flex;
@@ -143,3 +150,5 @@ header nav a{
 .login-container .form-button input{
     width: 100px;
 }  
+
+
