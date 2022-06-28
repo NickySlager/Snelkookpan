@@ -6,6 +6,10 @@ header{
     background-color: gray;
     height: 100px;
 }
+* {
+margin: 0;
+padding: 0;
+}
 header .logo img {
     margin: 0px 0px 0px 60px;
     width: 75px;
