@@ -11,7 +11,6 @@ if($action == "filter")
     //  alleen locatie 
     if (($locatieFilter != null) && ($prijsFilter == null) && (empty($personenFilter)))
     {
-        echo "doei";
     require_once "conn.php";
     $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0" ;
     $statement= $conn->prepare($query);
