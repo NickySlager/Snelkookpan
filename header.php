@@ -8,8 +8,9 @@
     <title>Header</title>
 </head>
 <header>
+    <?php require_once "backend/config.php"; ?>
     <div class="logo">
-    <a href="index.php"><img src="img/logo.png" alt="logo"></a>
+    <a href="index.php"><img src="<?php echo $base_url;?>/img/logo.png" alt="logo"></a>
     </div>
     <nav>
         <a href=http://localhost/snelkookpan/index.php>Home</a>
