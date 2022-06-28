@@ -12,22 +12,30 @@
                 <form action ="backend/backendController.php" method="post">
                     <input type="hidden" name="action" value="filter">
                     <div class="form-group">
+                        <div class="div1">
                         <label for="filter">Locatie Filter:</label>
                             <input type="text" name="locatie-filter" id ="locatie-filter">
+                            </div>    
                     </div>
                     <div class="form-group">
-                        <label for ="prijsfilter">Prijs Filter</label>
+                        <div class="div1">
+                        <label for ="prijsfilter">Prijs Filter:</label>
                             <select id ="prijs-filter" name="prijs-filter" style="width:200px;">
                                 <option value="" selected="selected" hidden="hidden"></option>
                                 <option value="0">Van hoog naar laag</option>
                                 <option value ="1">Van laag naar hoog</option>
                             </select>
+                            </div>    
                     </div>
                     <div class="form-group">
-                       <label for="personen-filter">Aantal personen Filter</label>
-                       <input type="number" min="0" name="personen-filter" id="personen-filter" style="width:117px;"> 	
+                        <div class="div1">
+                            <label for="personen-filter">Aantal personen Filter:</label>
+                            <input type="number" min="0" name="personen-filter" id="personen-filter" style="width:117px;">  
+                        </div>
+                        <div class="div2">
+                        <input type="submit" name="submit" value="submit"> 
+                        </div>   	
                     </div>    
-                        <input type="submit" name="submit" value="submit">
                     </form>
        </div>
         <div class="overzicht-huizen">
