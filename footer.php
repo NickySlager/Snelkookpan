@@ -6,8 +6,8 @@
         <a href=""><i class="fab fa-brands fa-linkedin"></i> Linkedin</a>
     </div>
     <div class="contact-info">
-        <p>snelkookpan</p> 
+        <p>©snelkookpan</p> 
     </div>
-    <p>©gemaakt door Nicky</p>
+    <p>gemaakt door Nicky</p>
     </div>
 </footer>

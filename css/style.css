@@ -149,5 +149,9 @@ header nav a{
 .login-container .form-button input{
     width: 100px;
 }  
+.div3{
+    background-color: gray;
+    text-align: right;
+}
 
 
