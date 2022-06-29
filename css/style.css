@@ -23,6 +23,10 @@ header nav{
 header nav a{
     text-decoration: none;
 }
+header a:hover {
+    border-bottom: 1px solid;
+    color: hotpink;
+}
 
 .wrapper{
     width: 67%;
@@ -52,6 +56,7 @@ header nav a{
 .overzicht-huis img{
  width: 300px;
  height: 200px;
+ padding-bottom: 50px;
 }
 .overzicht-huis a{
     display: flex;
@@ -94,7 +99,29 @@ header nav a{
 /* label  */
 .create-formulier label{
     display: block;
-
+}
+/* form*/
+.form-group1{
+    margin: 1rem 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 300px;
+}
+.form-group1 input{
+    width: 600px;
+}
+.form-group1 textarea{
+    width: 600px;
+    height: 100px;
+}
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
 }
 /* reviews */
 .review-form-container .form-group label{
@@ -149,9 +176,17 @@ header nav a{
 .login-container .form-button input{
     width: 100px;
 }  
+/* footer */
 .div3{
     background-color: gray;
     text-align: right;
+    padding: 10px;
+    height: 60px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 
