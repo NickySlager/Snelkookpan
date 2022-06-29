@@ -8,136 +8,27 @@ if($action == "filter")
     $prijsFilter = $_POST['prijs-filter'];
     $personenFilter= $_POST['personen-filter'];
 
-    //  alleen locatie 
-    if (($locatieFilter != null) && ($prijsFilter == null) && (empty($personenFilter)))
-    {
     require_once "conn.php";
-    $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0" ;
-    $statement= $conn->prepare($query);
-    $statement->execute([
-        ":locatie"=> $locatieFilter
-    ]);
-    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-    }
-    // alleen prijs 
-    elseif ((empty($personenFilter)) && (empty($locatieFilter)))
-    {
-        if($prijsFilter == 0)
-        {
-        require_once "conn.php";
-        $query= "SELECT * FROM huizen WHERE status = 0 ORDER BY prijs_per_dag DESC" ;
-        $statement= $conn->prepare($query);
-        $statement->execute();
-        $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
-        if($prijsFilter == 1)
-        {
-            require_once "conn.php";
-            $query= "SELECT * FROM huizen WHERE status = 0 ORDER BY prijs_per_dag ASC" ;
-            $statement= $conn->prepare($query);
-            $statement->execute();
-            $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
-    }
-    // alleen personen 
-    elseif ((empty($locatieFilter)) && ($prijsFilter == null))
-    {
+    $query= "SELECT * FROM huizen WHERE status = 0";
 
-    require_once "conn.php";
-    $query= "SELECT * FROM huizen WHERE :aantal_personen = aantal_personen AND status = 0" ;
-    $statement= $conn->prepare($query);
-    $statement->execute([
-        ":aantal_personen"=> $personenFilter
-    ]);
-    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-    }
-    // locatie + personen 
-    elseif ($prijsFilter == null)
+    if(!empty($locatieFilter))
     {
-    require_once "conn.php";
-    $query= "SELECT * FROM huizen WHERE :locatie = locatie AND status = 0 AND :aantal_personen = aantal_personen" ;
-    $statement= $conn->prepare($query);
-    $statement->execute([
-        "locatie" => $locatieFilter,
-        ":aantal_personen"=> $personenFilter
-    ]);
-    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
+        $query .=" AND locatie = '$locatieFilter'";
     }
-    // locatie + prijs 
-    elseif($personenFilter == null)
-    { 
-        if($prijsFilter == 0)
-            {
-            require_once "conn.php";
-            $query= "SELECT * FROM huizen WHERE status = 0 AND :locatie = locatie ORDER BY prijs_per_dag DESC" ;
-            $statement= $conn->prepare($query);
-            $statement->execute([
-                ":locatie"=>$locatieFilter
-            ]);
-            $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-            }
-            if($prijsFilter == 1)
-            {
-                require_once "conn.php";
-                $query= "SELECT * FROM huizen WHERE status = 0 AND :locatie = locatie ORDER BY prijs_per_dag ASC" ;
-                $statement= $conn->prepare($query);
-                $statement->execute([
-                    ":locatie"=>$locatieFilter
-                ]);
-                $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-            }
-    }
-    // prijs + personen 
-    elseif (empty($locatieFilter))
+    if(!empty($prijsFilter))
     {
-        if($prijsFilter == 0)
-        {
-        require_once "conn.php";
-        $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen ORDER BY prijs_per_dag DESC" ;
-        $statement= $conn->prepare($query);
-        $statement->execute([
-            ":aantal_personen" => $personenFilter
-        ]);
-        $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
-        if($prijsFilter == 1)
-        {
-            require_once "conn.php";
-            $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen ORDER BY prijs_per_dag ASC" ;
-            $statement= $conn->prepare($query);
-            $statement->execute([
-                ":aantal_personen"=>$personenFilter
-            ]);
-            $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
+        $query .=" AND prijs_per_dag < $prijsFilter";
+    }
+    if(isset($personenFilter))
+    {
+        $query .=" AND aantal_personen = $personenFilter";
+    }
+    $statement= $conn->prepare($query);
+    $statement->execute();
+    $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
 
-    }
-    elseif(((!empty($locatieFilter)) && (!empty($personenFilter)) && ($prijsFilter != null)))
-    {
-        if($prijsFilter == 0)
-        {
-        require_once "conn.php";
-        $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen AND :locatie = locatie ORDER BY prijs_per_dag DESC" ;
-        $statement= $conn->prepare($query);
-        $statement->execute([
-            ":aantal_personen" => $personenFilter,
-            ":locatie"=> $locatieFilter
-        ]);
-        $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
-        if($prijsFilter == 1)
-        {
-            require_once "conn.php";
-            $query= "SELECT * FROM huizen WHERE status = 0 AND :aantal_personen = aantal_personen AND :locatie = locatie ORDER BY prijs_per_dag ASC" ;
-            $statement= $conn->prepare($query);
-            $statement->execute([
-                ":aantal_personen"=>$personenFilter,
-                ":locatie"=> $locatieFilter
-            ]);
-            $huizen = $statement->Fetchall(PDO::FETCH_ASSOC);
-        }
-    }
-    ?>
+    
+     ?>
     <body>
         <div class="wrapper">
             <h1>Locatie Overzicht</h1>

@@ -22,8 +22,10 @@
                         <label for ="prijsfilter">Prijs Filter:</label>
                             <select id ="prijs-filter" name="prijs-filter" style="width:200px;">
                                 <option value="" selected="selected" hidden="hidden"></option>
-                                <option value="0">Van hoog naar laag</option>
-                                <option value ="1">Van laag naar hoog</option>
+                                <option value="50">< $50</option>
+                                <option value ="100">< $100</option>
+                                <option value ="150">< $150</option>
+                                <option value ="200">< $200</option>
                             </select>
                             </div>    
                     </div>
