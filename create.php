@@ -5,7 +5,9 @@
         <div class="create-formulier">
                 <form action = "backend/backendController.php" method="post">
                     <input type="hidden" name="action" value="create">
-                    <h1>New House</h1> 
+                    <div class="h1">
+                        <h1>New House</h1>
+                        </div>     
                     <div class="form-group1">   
                         <label for="locatie">Locatie:</label>
                         <input type="text" name="locatie" id="locatie">
