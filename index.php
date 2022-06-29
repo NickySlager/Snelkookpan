@@ -50,9 +50,9 @@
                 <div class="overzicht-huis">
                     <img src=img/<?php echo $huis["afbeelding"]; ?> alt="huis">
                     <div class="huis-informatie">
-                        <p>Locatie:<?php echo $huis["locatie"];?>
-                        <p>Aantal personen:<?php echo $huis["aantal_personen"];?>
-                        <p>Prijs per dag:€<?php echo $huis["prijs_per_dag"]; ?></p>
+                        <p><b>Locatie:</b> <?php echo $huis["locatie"];?>
+                        <p><b>Aantal personen:</b> <?php echo $huis["aantal_personen"];?>
+                        <p><b>Prijs per dag:</b> €<?php echo $huis["prijs_per_dag"]; ?></p>
                         <a href="detailspage.php?id=<?php echo $huis["id"];?>">Details</a>
                         <a href="reservepage.php?id=<?php echo $huis["id"];?>">Reserveren</a>
                     </div>
