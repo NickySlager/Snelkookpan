@@ -5,23 +5,26 @@
         <div class="create-formulier">
                 <form action = "backend/backendController.php" method="post">
                     <input type="hidden" name="action" value="create">
-                    <div class="form-group">
+                    <div class="h1">
+                        <h1>New House</h1>
+                        </div>     
+                    <div class="form-group1">   
                         <label for="locatie">Locatie:</label>
                         <input type="text" name="locatie" id="locatie">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                         <label for="aantal_personen">Aantal_personen:</label>
                         <input type="number" name="aantal_personen" id="aantal_personen">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                         <label for="prijs_per_dag">Prijs per dag:</label>
                         <input type="number" name="prijs_per_dag" id="prijs_per_dag">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                         <label for="afbeelding">Afbeelding:</label>
                         <input type="file" name="image" id="image">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group1">
                         <label for="beschrijving">Beschrijving:</label>
                         <textarea name="beschrijving" id ="beschrijving"></textarea>
                     </div>
@@ -30,3 +33,4 @@
         </div>
     </div>
 </body>
+<?php require_once "footer.php"?>
