@@ -31,7 +31,7 @@ if($action == "filter")
      ?>
     <body>
         <div class="wrapper">
-            <h1>Locatie Overzicht</h1>
+            <h1>Filter Overzicht</h1>
             <div class="overzicht-huizen">
             <?php
             foreach($huizen as $huis)
