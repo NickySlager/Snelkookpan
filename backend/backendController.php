@@ -1,5 +1,4 @@
 <?php require_once "../header.php"?>
-
 <?php
 $action = $_POST['action'];
 if($action == "filter")
@@ -152,7 +151,7 @@ if($action == "filter")
                                 <p>Aantal personen:<?php echo $huis["aantal_personen"];?>
                                 <p>Prijs per dag:€<?php echo $huis["prijs_per_dag"]; ?></p>
                                 <a href="http://localhost/snelkookpan/detailspage.php?id=<?php echo $huis["id"];?>">Details</a>
-                                <a href="http://localhost/snelkookpan/reservepage.php?id=<?php echo $huis["id"];?>">Reserveren</a>
+                                <a href="http://localhost/snelkookpan/detailspage.php?id=<?php echo $huis["id"];?>">Reserveren</a>
                             </div>
                         </div>
                     <?php
