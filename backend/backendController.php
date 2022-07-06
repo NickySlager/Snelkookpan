@@ -17,11 +17,11 @@ if($action == "filter")
     }
     if(!empty($prijsFilter))
     {
-        $query .="AND prijs_per_dag < $prijsFilter";
+        $query .=" AND prijs_per_dag < $prijsFilter";
     }
     if(!empty($personenFilter))
     {
-        $query .="AND aantal_personen = $personenFilter";
+        $query .=" AND aantal_personen = $personenFilter";
     }
     $statement= $conn->prepare($query);
     $statement->execute();
